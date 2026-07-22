@@ -308,6 +308,69 @@
 
   :focus-visible{outline:2px solid var(--chalk); outline-offset:2px;}
 
+  /* ---------- DASHBOARD SECTION ---------- */
+  .dash-grid{ display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; }
+  @media(max-width:900px){ .dash-grid{ grid-template-columns:1fr; } }
+
+  .dash-course-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media(max-width:560px){ .dash-course-grid{ grid-template-columns:1fr; } }
+  .dash-card{
+    border-radius:12px; padding:20px 20px 18px; min-height:150px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .dash-card.c1{ background:linear-gradient(135deg, #F6D9CE, #F3C7B8); }
+  .dash-card.c2{ background:linear-gradient(135deg, #FCE6B8, #F8D68C); }
+  .dash-card.c3{ background:linear-gradient(135deg, #DCD6F5, #C9C0EE); }
+  .dash-card.c4{ background:linear-gradient(135deg, #CDEBDD, #ABDFC6); }
+  .dash-card-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .dash-tag{
+    font-family:'IBM Plex Mono'; font-size:.7rem; background:rgba(255,255,255,.55);
+    padding:5px 10px; border-radius:999px; color:var(--navy); font-weight:600;
+  }
+  .dash-badge{
+    font-family:'IBM Plex Mono'; font-size:.68rem; background:rgba(28,43,51,.85); color:var(--chalk);
+    padding:4px 9px; border-radius:6px;
+  }
+  .dash-card h3{ font-size:1.05rem; color:var(--navy); margin:14px 0 4px; line-height:1.25; font-family:'Fraunces'; font-weight:600; }
+  .dash-card-meta{ font-size:.78rem; color:rgba(28,43,51,.65); }
+  .dash-card a.dash-link{
+    margin-top:12px; align-self:flex-start; font-family:'IBM Plex Mono'; font-size:.75rem;
+    color:var(--navy); border-bottom:1.5px solid var(--navy); padding-bottom:1px; text-decoration:none;
+  }
+
+  .dash-side{ display:flex; flex-direction:column; gap:20px; }
+  .dash-profile{
+    background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:22px; text-align:center;
+  }
+  .dash-avatar{
+    width:56px; height:56px; border-radius:50%; background:var(--navy); color:var(--chalk);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 10px;
+    font-family:'Fraunces'; font-size:1.15rem; font-weight:600;
+  }
+  .dash-profile h4{ font-size:1rem; }
+  .dash-profile p{ color:var(--slate); font-size:.8rem; margin:4px 0 0; }
+
+  .dash-streak{ background:var(--navy); color:var(--paper); border-radius:12px; padding:20px 20px 16px; }
+  .dash-streak .mono{ font-size:.7rem; color:rgba(241,243,236,.6); text-transform:uppercase; letter-spacing:.08em; }
+  .dash-streak-num{ font-family:'Fraunces'; font-size:1.7rem; color:var(--chalk); font-weight:700; margin-top:4px; }
+  .dash-streak-sub{ font-size:.76rem; color:rgba(241,243,236,.7); margin-bottom:14px; }
+  .dash-bar-chart{ display:flex; align-items:flex-end; gap:6px; height:70px; }
+  .dash-bar-col{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%; gap:6px; }
+  .dash-bar{ width:100%; border-radius:4px 4px 2px 2px; background:rgba(241,243,236,.18); min-height:4px; }
+  .dash-bar.has-data{ background:var(--chalk); }
+  .dash-bar-col span{ font-family:'IBM Plex Mono'; font-size:.6rem; color:rgba(241,243,236,.55); }
+
+  .dash-quicklinks{ background:var(--paper); border:1px solid var(--line); border-radius:12px; padding:20px; }
+  .dash-quicklinks h4{ font-size:.92rem; margin-bottom:12px; }
+  .dash-ql-item{ display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+  .dash-ql-item:last-child{ border-bottom:none; }
+  .dash-ql-dot{ width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+  .dash-ql-item div.dash-ql-text{ flex:1; }
+  .dash-ql-item .dash-ql-name{ font-size:.83rem; font-weight:600; }
+  .dash-ql-item .dash-ql-cat{ font-size:.7rem; color:var(--slate); font-family:'IBM Plex Mono'; }
+  .dash-ql-item a{ font-size:.7rem; color:var(--teal); font-family:'IBM Plex Mono'; text-decoration:none; }
+  [data-theme="dark"] .dash-card h3{ color:var(--navy); }
+
   /* ---------- DARK MODE ---------- */
   html{transition:background .2s;}
   [data-theme="dark"]{
@@ -389,6 +452,7 @@
     border:1px solid var(--coral); border-radius:999px; padding:6px 14px; cursor:pointer;
   }
   .clear-btn:hover{background:var(--coral); color:#fff;}
+
 </style>
 </head>
 <body>
@@ -401,6 +465,7 @@
       <a href="#resources">Resources</a>
       <a href="#scholarships">Scholarships</a>
       <a href="#planner">Planner</a>
+      <a href="#dashboard">Dashboard</a>
       <a href="#volunteer">Volunteer</a>
       <a href="#stories">Stories</a>
       <a href="#about">About</a>
@@ -621,7 +686,93 @@
   </div>
 </section>
 
-<section class="alt" id="volunteer">
+<section class="alt" id="dashboard">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Your dashboard</span>
+      <h2>Everything in one glance.</h2>
+      <p>A quick view of popular resources and your planner activity — no login required, it just reads what's already in this browser.</p>
+    </div>
+
+    <div class="dash-grid">
+      <div>
+        <div class="dash-course-grid" id="dashCourseGrid">
+          <div class="dash-card c1">
+            <div class="dash-card-top"><span class="dash-tag">School (K-12)</span><span class="dash-badge">Free</span></div>
+            <div>
+              <h3>DIKSHA — NCERT Curriculum</h3>
+              <div class="dash-card-meta">Videos, textbooks &amp; quizzes in regional languages</div>
+            </div>
+            <a href="https://diksha.gov.in" target="_blank" rel="noopener" class="dash-link">Visit diksha.gov.in →</a>
+          </div>
+
+          <div class="dash-card c2">
+            <div class="dash-card-top"><span class="dash-tag">Exam Prep</span><span class="dash-badge">Free</span></div>
+            <div>
+              <h3>NPTEL — IIT/IISc Lectures</h3>
+              <div class="dash-card-meta">Engineering &amp; science video courses</div>
+            </div>
+            <a href="https://nptel.ac.in" target="_blank" rel="noopener" class="dash-link">Visit nptel.ac.in →</a>
+          </div>
+
+          <div class="dash-card c3">
+            <div class="dash-card-top"><span class="dash-tag">Skills</span><span class="dash-badge">Free</span></div>
+            <div>
+              <h3>freeCodeCamp</h3>
+              <div class="dash-card-meta">Project-based coding, with free certification</div>
+            </div>
+            <a href="https://freecodecamp.org" target="_blank" rel="noopener" class="dash-link">Visit freecodecamp.org →</a>
+          </div>
+
+          <div class="dash-card c4">
+            <div class="dash-card-top"><span class="dash-tag">Language</span><span class="dash-badge">Free</span></div>
+            <div>
+              <h3>BBC Learning English</h3>
+              <div class="dash-card-meta">Structured spoken &amp; written English lessons</div>
+            </div>
+            <a href="https://bbc.co.uk/learningenglish" target="_blank" rel="noopener" class="dash-link">Visit bbc.co.uk →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-side">
+        <div class="dash-profile">
+          <div class="dash-avatar">GS</div>
+          <h4>Welcome, Learner</h4>
+          <p>No login needed — your data stays on this device</p>
+        </div>
+
+        <div class="dash-streak">
+          <span class="mono">This week</span>
+          <div class="dash-streak-num" id="dashStreakNum">0 tasks</div>
+          <div class="dash-streak-sub" id="dashStreakSub">done from your Study Planner</div>
+          <div class="dash-bar-chart" id="dashBarChart"></div>
+        </div>
+
+        <div class="dash-quicklinks">
+          <h4>Quick links</h4>
+          <div class="dash-ql-item">
+            <div class="dash-ql-dot"></div>
+            <div class="dash-ql-text"><div class="dash-ql-name">SWAYAM</div><div class="dash-ql-cat">Free MOOCs</div></div>
+            <a href="https://swayam.gov.in" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="dash-ql-item">
+            <div class="dash-ql-dot"></div>
+            <div class="dash-ql-text"><div class="dash-ql-name">Scholarship Portal</div><div class="dash-ql-cat">Govt. schemes</div></div>
+            <a href="https://scholarships.gov.in" target="_blank" rel="noopener">Open</a>
+          </div>
+          <div class="dash-ql-item">
+            <div class="dash-ql-dot"></div>
+            <div class="dash-ql-text"><div class="dash-ql-name">Khan Academy</div><div class="dash-ql-cat">Self-paced</div></div>
+            <a href="https://khanacademy.org" target="_blank" rel="noopener">Open</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
   <div class="wrap">
     <div class="section-head">
       <span class="tag">Get involved</span>
@@ -837,6 +988,7 @@
             plannerData[day][i].done = cb.checked;
             savePlanner();
             renderPlanner();
+            renderDashboardActivity();
           });
           const span = document.createElement('span');
           span.textContent = task.text;
@@ -848,6 +1000,7 @@
             plannerData[day].splice(i,1);
             savePlanner();
             renderPlanner();
+            renderDashboardActivity();
           });
           li.appendChild(cb);
           li.appendChild(span);
@@ -875,6 +1028,7 @@
         savePlanner();
         input.value = '';
         renderPlanner();
+        renderDashboardActivity();
       }
       addBtn.addEventListener('click', addTask);
       input.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); addTask(); } });
@@ -892,9 +1046,43 @@
     DAYS.forEach(day => { plannerData[day] = plannerData[day].filter(t => !t.done); });
     savePlanner();
     renderPlanner();
+    renderDashboardActivity();
   });
 
-  // volunteer form — sends an email via Formspree
+  // ---------- dashboard activity chart (reuses the same plannerData above) ----------
+  const dashBarChart = document.getElementById('dashBarChart');
+  const dashStreakNum = document.getElementById('dashStreakNum');
+  const dashStreakSub = document.getElementById('dashStreakSub');
+
+  function renderDashboardActivity(){
+    dashBarChart.innerHTML = '';
+    let totalDone = 0;
+    let anyTasks = false;
+    DAYS.forEach(day => {
+      const tasks = plannerData[day] || [];
+      const done = tasks.filter(t => t.done).length;
+      if (tasks.length > 0) anyTasks = true;
+      totalDone += done;
+      const maxBarHeight = 52;
+      const height = Math.min(done, 6) / 6 * maxBarHeight;
+
+      const col = document.createElement('div');
+      col.className = 'dash-bar-col';
+      const bar = document.createElement('div');
+      bar.className = 'dash-bar' + (done > 0 ? ' has-data' : '');
+      bar.style.height = (done > 0 ? Math.max(height, 8) : 4) + 'px';
+      const label = document.createElement('span');
+      label.textContent = day.slice(0,1);
+      col.appendChild(bar);
+      col.appendChild(label);
+      dashBarChart.appendChild(col);
+    });
+    dashStreakNum.textContent = totalDone + (totalDone === 1 ? ' task' : ' tasks');
+    dashStreakSub.textContent = anyTasks ? 'done from your Study Planner' : 'Add tasks in the Study Planner to see activity here';
+  }
+  renderDashboardActivity();
+
+
   const volForm = document.getElementById('volForm');
   const successMsg = document.getElementById('successMsg');
   const errorMsg = document.getElementById('errorMsg');
